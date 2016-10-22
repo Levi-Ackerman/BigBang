@@ -11,6 +11,7 @@ import lizhengxian.top.bigbang.R;
 import lizhengxian.top.bigbang.tool.Constant;
 import lizhengxian.top.bigbang.tool.HTTPRequest;
 import lizhengxian.top.bigbang.tool.IResponse;
+import lizhengxian.top.bigbang.widget.BangWordView;
 
 /**
  * Created by lizhengxian on 2016/10/23.
@@ -48,10 +49,8 @@ public class BigBangActivity extends Activity implements View.OnClickListener {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(),builder.toString(),Toast.LENGTH_SHORT).show();
-//                            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//                            Button button = new Button(this);
-//                            button.setText("最后一个镜头");
-//                            mAutoLayout.addView(button, params);
+                            BangWordView bangWordView = new BangWordView(getApplication(),"韩语");
+                            mAutoLayout.addView(bangWordView);
                         }
                     });
                 }

@@ -11,10 +11,24 @@
 
         <lizhengxian.top.bigbang.widget.AutoExpandLinearLayout
             android:id="@+id/auto_layout"
+            android:padding="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></lizhengxian.top.bigbang.widget.AutoExpandLinearLayout>
+            android:layout_height="wrap_content">
+            <!--<CheckBox-->
+                <!--android:button="@null"-->
+                <!--android:textStyle="normal"-->
+                <!--android:background="@drawable/checkbox_selector"-->
+                <!--android:text="中文"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        </lizhengxian.top.bigbang.widget.AutoExpandLinearLayout>
     </ScrollView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_above="@+id/use_result"/>
     <LinearLayout
         android:id="@+id/use_result"
         android:layout_alignParentBottom="true"
