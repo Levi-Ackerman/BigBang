@@ -39,18 +39,15 @@ public class BigBangActivity extends Activity implements View.OnClickListener {
     protected void requestServe(String text) {
         HTTPRequest.getSplitChar(text, new IResponse() {
             @Override
-            public void finish(String[] words) {
+            public void finish(final String[] words) {
                 if (words != null) {
-                    final StringBuilder builder = new StringBuilder("分词结果: ");
-                    for (String word : words) {
-                        builder.append(word).append(" | ");
-                    }
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(),builder.toString(),Toast.LENGTH_SHORT).show();
-                            BangWordView bangWordView = new BangWordView(getApplication(),"韩语");
-                            mAutoLayout.addView(bangWordView);
+                            for (String word : words) {
+                                BangWordView bangWordView = new BangWordView(getApplication(),word);
+                                mAutoLayout.addView(bangWordView);
+                            }
                         }
                     });
                 }

@@ -24,5 +24,6 @@ public class BangWordView extends CheckBox {
         setLayoutParams(params);
         setText(text);
         setTextColor(Color.BLACK);
+        setTextSize(18);
     }
 }

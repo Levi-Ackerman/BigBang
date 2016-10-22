@@ -9,6 +9,7 @@ import android.view.ViewGroup;
  * 根据按钮多少自动换行的ViewGroup
  */
 public class AutoExpandLinearLayout extends ViewGroup {
+    private static final int MARGIN = 5;
     private int maxWidth;// 可使用的最大宽度
     public AutoExpandLinearLayout(Context context) {
         super(context);
@@ -61,7 +62,7 @@ public class AutoExpandLinearLayout extends ViewGroup {
                 row++;
                 left = 0;//每次换行后要将子组件左边“坐标”与右边“坐标”重新初始化
                 right = 0;
-                left = p + right;
+                left = p + right ;
                 right = left + width;
                 top = p * row + height * (row - 1);
                 bottom = top + height;

@@ -67,7 +67,7 @@ public class BigBangService extends Service {
             public void onPrimaryClipChanged() {
                 Intent intent = new Intent(getApplication(), BigBangActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra(Constant.CLIPBOARD_TEXT,clipboard.getPrimaryClip());
+                intent.putExtra(Constant.CLIPBOARD_TEXT,clipboard.getText().toString());
                 startActivity(intent);
             }
         });

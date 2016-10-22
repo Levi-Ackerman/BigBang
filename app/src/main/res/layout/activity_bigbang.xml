@@ -7,10 +7,12 @@
     <ScrollView
         android:layout_above="@+id/use_result"
         android:layout_width="match_parent"
+        android:padding="0dp"
         android:layout_height="match_parent">
 
         <lizhengxian.top.bigbang.widget.AutoExpandLinearLayout
             android:id="@+id/auto_layout"
+            android:paddingLeft="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <!--<CheckBox-->
