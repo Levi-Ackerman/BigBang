@@ -11,7 +11,6 @@
 
         <lizhengxian.top.bigbang.widget.AutoExpandLinearLayout
             android:id="@+id/auto_layout"
-            android:padding="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <!--<CheckBox-->
