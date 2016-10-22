@@ -12,6 +12,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import lizhengxian.top.bigbang.BigBangService;
+import lizhengxian.top.bigbang.tool.Constant;
 import lizhengxian.top.bigbang.tool.HTTPRequest;
 import lizhengxian.top.bigbang.tool.IResponse;
 import lizhengxian.top.bigbang.R;
@@ -49,32 +50,9 @@ public class SettingActivity extends Activity implements CompoundButton.OnChecke
     @Override
     public void onClick(View view) {
         String text = mTestText.getText().toString();
-        HTTPRequest.getSplitChar(text, new IResponse() {
-            @Override
-            public void finish(String[] words) {
-                if (words != null) {
-                    final StringBuilder builder = new StringBuilder("分词结果: ");
-                    for (String word : words) {
-                        builder.append(word).append(" | ");
-                    }
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplication(), builder.toString(), Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void failure(final String errorMsg) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+        Intent intent = new Intent(getApplication(), BigBangActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Constant.CLIPBOARD_TEXT,text);
+        startActivity(intent);
     }
 }
