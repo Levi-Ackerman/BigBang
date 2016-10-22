@@ -1,16 +1,20 @@
 package lizhengxian.top.bigbang.activity;
 
 import android.app.Activity;
+import android.content.ClipboardManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import lizhengxian.top.bigbang.R;
 import lizhengxian.top.bigbang.tool.Constant;
 import lizhengxian.top.bigbang.tool.HTTPRequest;
 import lizhengxian.top.bigbang.tool.IResponse;
+import lizhengxian.top.bigbang.widget.AutoExpandLinearLayout;
 import lizhengxian.top.bigbang.widget.BangWordView;
 
 /**
@@ -19,7 +23,7 @@ import lizhengxian.top.bigbang.widget.BangWordView;
  */
 
 public class BigBangActivity extends Activity implements View.OnClickListener {
-    ViewGroup mAutoLayout;
+    AutoExpandLinearLayout mAutoLayout;
     Button mCopyBtn;
     Button mCancelBtn;
 
@@ -27,7 +31,7 @@ public class BigBangActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bigbang);
-        mAutoLayout = (ViewGroup) findViewById(R.id.auto_layout);
+        mAutoLayout = (AutoExpandLinearLayout) findViewById(R.id.auto_layout);
         mCopyBtn = (Button) findViewById(R.id.btn_copy);
         mCancelBtn = (Button)findViewById(R.id.btn_cancel);
         mCopyBtn.setOnClickListener(this);
@@ -71,7 +75,24 @@ public class BigBangActivity extends Activity implements View.OnClickListener {
             case R.id.btn_cancel:
                 finish();
                 break;
-            case R.id.btn_copy:break;
+            case R.id.btn_copy:
+                int count = mAutoLayout.getChildCount();
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < count; i++) {
+                    CheckBox checkBox = (CheckBox) mAutoLayout.getChildAt(i);
+                    if (checkBox.isChecked()){
+                        builder.append(checkBox.getText());
+                    }
+                }
+                String str = builder.toString();
+                if(TextUtils.isEmpty(str)){
+                    Toast.makeText(getApplicationContext(),"没有选中词组",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"["+str+"] 已经复制到剪切板",Toast.LENGTH_SHORT).show();
+                    ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                    clipboardManager.setText(str);
+                }
+                break;
         }
     }
 }
