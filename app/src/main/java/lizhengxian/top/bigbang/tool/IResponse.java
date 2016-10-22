@@ -1,4 +1,4 @@
-package lizhengxian.top.bigbang;
+package lizhengxian.top.bigbang.tool;
 
 /**
  * Created by lizhengxian on 2016/10/23.

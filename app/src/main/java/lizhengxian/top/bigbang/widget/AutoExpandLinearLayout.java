@@ -1,10 +1,13 @@
-package lizhengxian.top.bigbang;
+package lizhengxian.top.bigbang.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * 根据按钮多少自动换行的ViewGroup
+ */
 public class AutoExpandLinearLayout extends ViewGroup {
     private int maxWidth;// 可使用的最大宽度
     public AutoExpandLinearLayout(Context context) {

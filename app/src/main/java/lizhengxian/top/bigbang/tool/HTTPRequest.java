@@ -1,13 +1,10 @@
-package lizhengxian.top.bigbang;
-
-import android.util.Log;
+package lizhengxian.top.bigbang.tool;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 
 /**
  * Created by lizhengxian on 2016/10/22.

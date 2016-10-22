@@ -9,10 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <lizhengxian.top.bigbang.AutoExpandLinearLayout
+        <lizhengxian.top.bigbang.widget.AutoExpandLinearLayout
             android:id="@+id/auto_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></lizhengxian.top.bigbang.AutoExpandLinearLayout>
+            android:layout_height="match_parent"></lizhengxian.top.bigbang.widget.AutoExpandLinearLayout>
     </ScrollView>
 
     <LinearLayout
@@ -28,8 +28,8 @@
             android:layout_weight="1"
             android:layout_height="wrap_content" />
         <Button
-            android:text="分享"
-            android:id="@+id/btn_share"
+            android:text="取消"
+            android:id="@+id/btn_cancel"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
