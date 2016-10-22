@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_above="@+id/use_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <lizhengxian.top.bigbang.AutoExpandLinearLayout
+            android:id="@+id/auto_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></lizhengxian.top.bigbang.AutoExpandLinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/use_result"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="复制"
+            android:id="@+id/btn_copy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="分享"
+            android:id="@+id/btn_share"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="搜索"
+            android:id="@+id/btn_search"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>
