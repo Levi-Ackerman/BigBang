@@ -1,11 +1,14 @@
 package lizhengxian.top.bigbang.activity;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -26,11 +29,25 @@ public class BigBangActivity extends Activity implements View.OnClickListener {
     AutoExpandLinearLayout mAutoLayout;
     Button mCopyBtn;
     Button mCancelBtn;
+    public static boolean isShowing = false;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        isShowing = true;
+    }
+
+    @Override
+    protected void onStop() {
+        isShowing = false;
+        super.onStop();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bigbang);
+        registerReceiver(receiver,new IntentFilter(Constant.FINISH_BIGBANG_ACTIVITY));
         mAutoLayout = (AutoExpandLinearLayout) findViewById(R.id.auto_layout);
         mCopyBtn = (Button) findViewById(R.id.btn_copy);
         mCancelBtn = (Button)findViewById(R.id.btn_cancel);
@@ -95,4 +112,17 @@ public class BigBangActivity extends Activity implements View.OnClickListener {
                 break;
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(receiver);
+        super.onDestroy();
+    }
+
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            finish();
+        }
+    };
 }

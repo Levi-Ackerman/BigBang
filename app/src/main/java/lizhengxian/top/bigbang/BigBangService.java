@@ -13,7 +13,6 @@ import lizhengxian.top.bigbang.activity.BigBangActivity;
 import lizhengxian.top.bigbang.activity.SettingActivity;
 import lizhengxian.top.bigbang.tool.Constant;
 
-import static android.app.PendingIntent.FLAG_NO_CREATE;
 import static android.app.PendingIntent.getActivity;
 
 /**
@@ -65,10 +64,15 @@ public class BigBangService extends Service {
         clipboard.addPrimaryClipChangedListener(new ClipboardManager.OnPrimaryClipChangedListener() {
             @Override
             public void onPrimaryClipChanged() {
-                Intent intent = new Intent(getApplication(), BigBangActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra(Constant.CLIPBOARD_TEXT,clipboard.getText().toString());
-                startActivity(intent);
+                if (BigBangActivity.isShowing) {
+                    //是BigBang复制的,复制结束了就发广播关闭
+                    sendBroadcast(new Intent(Constant.FINISH_BIGBANG_ACTIVITY));
+                } else {
+                    Intent intent = new Intent(getApplication(), BigBangActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra(Constant.CLIPBOARD_TEXT, clipboard.getText().toString());
+                    startActivity(intent);
+                }
             }
         });
     }

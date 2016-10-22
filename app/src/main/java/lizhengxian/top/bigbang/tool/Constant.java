@@ -6,4 +6,5 @@ package lizhengxian.top.bigbang.tool;
 
 public class Constant {
     public static final String CLIPBOARD_TEXT = "clipboard_text";
+    public static final String FINISH_BIGBANG_ACTIVITY = "top.lizhengxian.bigbang.finish_bigbang_activity";
 }
