@@ -3,8 +3,10 @@ package lizhengxian.top.bigbang.tool;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -27,9 +29,15 @@ public class HTTPRequest {
             public void run() {
                 String result = null;
                 HttpURLConnection conn = null;
+                String utf8string = "";
+                try {
+                    utf8string = URLEncoder.encode(text,"UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
                 StringBuilder urlBuilder = new StringBuilder("http://api.ltp-cloud.com/analysis")
                         .append('?').append("api_key").append('=').append("D8W3a5b4fvVngvMYrx0cfHOj5bKlrXlx6iiwsGNn")
-                        .append('&').append("text").append('=').append(text)
+                        .append('&').append("text").append('=').append(utf8string)
                         .append('&').append("pattern").append('=').append("ws")
                         .append('&').append("format").append('=').append("plain");
                 String url = urlBuilder.toString();
