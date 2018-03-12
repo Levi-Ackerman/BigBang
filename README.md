@@ -22,7 +22,7 @@
 
 ## 注意
 云服务的免费接口有每日流量限制，如果遇服务器返回错误503，说明今日流量已用尽。希望大家仅做学习使用。
-项目正在完善当中,如有疑问和bug欢迎交流,作者博客:[http://www.lizhengxian.top](http://www.lizhengxian.top)
+项目正在完善当中,如有疑问和bug欢迎交流,作者博客:[https://juejin.im/user/57e32a8dc4c971005f4b4daa](https://juejin.im/user/57e32a8dc4c971005f4b4daa)
 
 ## License
 
